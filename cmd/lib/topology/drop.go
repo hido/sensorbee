@@ -20,7 +20,7 @@ func setUpDrop() cli.Command {
 	}
 }
 
-func runDrop(c *cli.Context) {
+func runDrop(c *cli.Context) error {
 	defer panicHandler()
 	validateFlags(c)
 
@@ -43,4 +43,5 @@ func runDrop(c *cli.Context) {
 		panic(1)
 	}
 	do(c, client.Delete, path.Join("topologies", name), nil, "Cannot drop a topology").Close()
+  return nil
 }

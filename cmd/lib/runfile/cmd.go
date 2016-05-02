@@ -56,7 +56,7 @@ func SetUp() cli.Command {
 }
 
 // Run runs "runfile" command.
-func Run(c *cli.Context) {
+func Run(c *cli.Context) error {
 	// TODO: Merge this implementation with cmd/run
 	if len(c.Args()) != 1 {
 		cli.ShowSubcommandHelp(c)
@@ -166,6 +166,7 @@ func Run(c *cli.Context) {
 	}
 	logger.Info("All sources has been stopped.")
 
+  return nil
 }
 
 func setUpUDSStorage(conf *config.UDSStorage) (udf.UDSStorage, error) {

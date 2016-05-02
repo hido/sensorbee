@@ -18,7 +18,7 @@ func setUpCreate() cli.Command {
 	}
 }
 
-func runCreate(c *cli.Context) {
+func runCreate(c *cli.Context) error {
 	defer panicHandler()
 	validateFlags(c)
 
@@ -38,4 +38,5 @@ func runCreate(c *cli.Context) {
 		"name": args[0],
 	}, "Cannot create a topology").Close()
 	// TODO: show something about the created topology
+  return nil
 }

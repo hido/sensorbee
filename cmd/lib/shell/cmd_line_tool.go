@@ -38,7 +38,7 @@ func SetUp() cli.Command {
 }
 
 // Launch SensorBee's command line client tool.
-func Launch(c *cli.Context) {
+func Launch(c *cli.Context) error {
 	defer panicHandler()
 	validateFlags(c)
 	if c.IsSet("topology") {
@@ -53,6 +53,7 @@ func Launch(c *cli.Context) {
 	}
 	app := SetUpCommands(cmds)
 	app.Run(newRequester(c))
+  return nil
 }
 
 // TODO: merge following function implementations with lib/topology's

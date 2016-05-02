@@ -50,7 +50,7 @@ func main() {
 	app.Run(os.Args)
 }
 
-func action(c *cli.Context) {
+func action(c *cli.Context) error {
 	defer func() {
 		if e := recover(); e != nil {
 			fmt.Fprintln(os.Stderr, e)
@@ -65,6 +65,7 @@ func action(c *cli.Context) {
 	downloadPlugins(c, config)
 	create(c, config)
 	build(c, config)
+  return nil
 }
 
 type Config struct {

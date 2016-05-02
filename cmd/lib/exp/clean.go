@@ -22,7 +22,7 @@ func setUpClean() cli.Command {
 	return cmd
 }
 
-func runClean(c *cli.Context) {
+func runClean(c *cli.Context) error {
 	err := func() (retErr error) {
 		cache, err := LoadCacheFromFile(cacheInfoFilename)
 		if err != nil {
@@ -55,6 +55,7 @@ func runClean(c *cli.Context) {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(1)
 	}
+  return nil
 }
 
 func removeCacheFile(ent *CacheEntry) error {

@@ -37,7 +37,7 @@ func SetUp() cli.Command {
 }
 
 // Run run the HTTP server.
-func Run(c *cli.Context) {
+func Run(c *cli.Context) error {
 	defer func() {
 		// This logic is provided to write test codes for this command line tool like below:
 		// if v := recover(); v != nil {
@@ -125,4 +125,5 @@ func Run(c *cli.Context) {
 		panic(1)
 	}
 	cgvars.Logger.Infof("The server stopped")
+  return nil
 }

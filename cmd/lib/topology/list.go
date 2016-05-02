@@ -21,7 +21,7 @@ func setUpList() cli.Command {
 	}
 }
 
-func runList(c *cli.Context) {
+func runList(c *cli.Context) error {
 	defer panicHandler()
 	validateFlags(c)
 
@@ -42,4 +42,6 @@ func runList(c *cli.Context) {
 	for _, t := range ts.Topologies {
 		fmt.Fprintln(c.App.Writer, t.Name)
 	}
+
+  return nil
 }
